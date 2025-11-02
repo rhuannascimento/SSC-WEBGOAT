@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  webgoat:
+    image: webgoat/webgoat
+    container_name: webgoat
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:9090:9090"
+    environment:
+      - TZ=Europe/Amsterdam
+    volumes:
+      - webgoat_data:/data
+    restart: unless-stopped
+
+volumes:
+  webgoat_data:
+    driver: local
